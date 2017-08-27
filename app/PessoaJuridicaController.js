@@ -20,7 +20,7 @@ angular.module('crudApp').controller('PessoaJuridicaController',
 
         self.onlyIntegers = /^\d+$/;
         self.onlyNumbers = /^\d+([,.]\d+)?$/;
-        
+
         self.filterCondition = {
             u: {}
         }
@@ -28,29 +28,29 @@ angular.module('crudApp').controller('PessoaJuridicaController',
         function submit() {
             console.log('Submetendo');
             if (self.pessoaJuridica.id === undefined || self.pessoaJuridica.id === null) {
-                console.log('Salvando um nova Pessoa Jur&#x00ED;dica', self.pessoaJuridica);
+                console.log('Salvando um nova Pessoa Jurídica', self.pessoaJuridica);
                 createPessoaJuridica(self.pessoaJuridica);
             } else {
                 updatePessoaJuridica(self.pessoaJuridica, self.pessoaJuridica.id);
-                console.log('Pessoa Jur&#x00ED;dica atualizado com o id ', self.pessoaJuridica.id);
+                console.log('Pessoa Jurídica atualizado com o id ', self.pessoaJuridica.id);
             }
         }
 
         function createPessoaJuridica(pessoaJuridica) {
-            console.log('Criação da Pessoa Jur&#x00ED;dica');
+            console.log('Criação da Pessoa Jurídica');
             PessoaJuridicaService.createPessoaJuridica(pessoaJuridica)
                 .then(
                     function (response) {
-                        console.log('Pessoa Jur&#x00ED;dica cadastrada com sucesso');
-                        self.successMessage = 'Pessoa Jur&#x00ED;dica cadastrada com sucesso';
+                        console.log('Pessoa Jurídica cadastrada com sucesso');
+                        self.successMessage = 'Pessoa Jurídica cadastrada com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         self.pessoaJuridica={};
                         $scope.myForm.$setPristine();
                     },
                     function (errResponse) {
-                        console.error('Erro ao criar a Pessoa Jur&#x00ED;dica');
-                        self.errorMessage = 'Erro ao criar a Pessoa Jur&#x00ED;dica: ' + errResponse.data.errorMessage;
+                        console.error('Erro ao criar a Pessoa Jurídica');
+                        self.errorMessage = 'Erro ao criar a Pessoa Jurídica: ' + errResponse.data.errorMessage;
                         self.successMessage='';
                     }
                 );
@@ -62,15 +62,15 @@ angular.module('crudApp').controller('PessoaJuridicaController',
             PessoaJuridicaService.updatePessoaJuridica(pessoaJuridica, id)
                 .then(
                     function (response){
-                        console.log('Pessoa Jur&#x00ED;dica atualizada com sucesso');
-                        self.successMessage='Pessoa Jur&#x00ED;dica atualizada com sucesso';
+                        console.log('Pessoa Jurídica atualizada com sucesso');
+                        self.successMessage='Pessoa Jurídica atualizada com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
                     function(errResponse){
-                        console.error('Erro ao remover a Pessoa Jur&#x00ED;dica');
-                        self.errorMessage='Erro ao remover a Pessoa Jur&#x00ED;dica '+errResponse.data;
+                        console.error('Erro ao remover a Pessoa Jurídica');
+                        self.errorMessage='Erro ao remover a Pessoa Jurídica '+errResponse.data;
                         self.successMessage='';
                     }
                 );
@@ -82,10 +82,10 @@ angular.module('crudApp').controller('PessoaJuridicaController',
             PessoaJuridicaService.removePessoaJuridica(id)
                 .then(
                     function(){
-                        console.log('Pessoa Jur&#x00ED;dica '+id + ' removida com sucesso');
+                        console.log('Pessoa Jurídica '+id + ' removida com sucesso');
                     },
                     function(errResponse){
-                        console.error('Erro ao remover a Pessoa Jur&#x00ED;dica '+id +', Error :'+errResponse.data);
+                        console.error('Erro ao remover a Pessoa Jurídica '+id +', Error :'+errResponse.data);
                     }
                 );
         }
@@ -103,7 +103,7 @@ angular.module('crudApp').controller('PessoaJuridicaController',
                     self.pessoaJuridica = pessoaJuridica;
                 },
                 function (errResponse) {
-                    console.error('Erro ao remover a Pessoa Jur&#x00ED;dica ' + id + ', Error :' + errResponse.data);
+                    console.error('Erro ao remover a Pessoa Jurídica ' + id + ', Error :' + errResponse.data);
                 }
             );
         }

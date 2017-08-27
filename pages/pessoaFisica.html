@@ -1,6 +1,6 @@
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading"><span class="lead">Pessoa F&#x00ED;sica</span></div>
+    <div class="panel-heading"><span class="lead">Pessoa Física</span></div>
     <div class="panel-body">
         <div class="formcontainer">
             <div class="alert alert-success" role="alert" ng-if="pessoaFisicaCtrl.successMessage">{{pessoaFisicaCtrl.successMessage}}</div>
@@ -19,7 +19,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="age">CPF</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="pessoaFisicaCtrl.pessoaFisica.cpfcnpj" id="cpfcnpj" class="form-control input-sm" placeholder="Digite o CPF da Pessoa F&#x00ED;sica" required/>
+                            <input type="text" ng-model="pessoaFisicaCtrl.pessoaFisica.cpfcnpj" id="cpfcnpj" class="form-control input-sm" placeholder="Digite o CPF da Pessoa Física" required/>
                         </div>
                     </div>
                 </div>
@@ -34,7 +34,7 @@
 
                 <div class="row">
                     <div class="form-actions floatRight">
-                        <input type="submit"  value="{{!pessoaFisicaCtrl.pessoaFisica ? 'Salvar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                        <input type="submit"  value="{{!pessoaFisicaCtrl.pessoaFisica.id ? 'Salvar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
                         <button type="button" ng-click="pessoaFisicaCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
 </div>
 <div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading"><span class="lead">Lista de Pessoas F&#x00ED;sicas</span></div>
+    <div class="panel-heading"><span class="lead">Lista de Pessoas Físicas</span></div>
     <div class="panel-body">
         <div class="table-responsive">
             <table class="table table-hover">

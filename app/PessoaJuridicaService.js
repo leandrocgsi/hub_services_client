@@ -38,16 +38,16 @@ angular.module('crudApp').factory('PessoaJuridicaService',
             }
 
             function getPessoaJuridica(id) {
-                console.log('Recuperando as informações da Pessoa Jur&#x00ED;dica com o id :'+id);
+                console.log('Recuperando as informações da Pessoa Jurídica com o id :'+id);
                 var deferred = $q.defer();
-                $http.get(urls.PESSOA_JURIDICA_SERVICE_API + id.id + "/" +id.registration)
+                $http.get(urls.PESSOA_JURIDICA_SERVICE_API + "/" + id)
                     .then(
                         function (response) {
-                            console.log('Recuperando as informações da Pessoa Jur&#x00ED;dica com o id :'+id);
+                            console.log('Recuperando as informações da Pessoa Jurídica com o id :'+id);
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao ler as informações da Pessoa Jur&#x00ED;dica com o id  :'+id);
+                            console.error('Erro ao ler as informações da Pessoa Jurídica com o id  :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -64,7 +64,7 @@ angular.module('crudApp').factory('PessoaJuridicaService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                           console.error('Erro ao criar a Pessoa Jur&#x00ED;dica : '+errResponse.data.errorMessage);
+                           console.error('Erro ao criar a Pessoa Jurídica : '+errResponse.data.errorMessage);
                            deferred.reject(errResponse);
                         }
                     );
@@ -74,14 +74,14 @@ angular.module('crudApp').factory('PessoaJuridicaService',
             function updatePessoaJuridica(pessoaJuridica, id) {
                 console.log('Atualizando Pessoa Juridica de id '+id);
                 var deferred = $q.defer();
-                $http.put(urls.PESSOA_JURIDICA_SERVICE_API + id.id + "/" +id.registration, pessoaJuridica)
+                $http.put(urls.PESSOA_JURIDICA_SERVICE_API + "/" + id, pessoaJuridica)
                     .then(
                         function (response) {
                             loadAllPessoaJuridica();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao atualizar a Pessoa Jur&#x00ED;dica com o id  :'+id);
+                            console.error('Erro ao atualizar a Pessoa Jurídica com o id  :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -89,16 +89,16 @@ angular.module('crudApp').factory('PessoaJuridicaService',
             }
 
             function removePessoaJuridica(id) {
-                console.log('Removendo a Pessoa Jur&#x00ED;dica com o id '+id);
+                console.log('Removendo a Pessoa Jurídica com o id '+id);
                 var deferred = $q.defer();
-                $http.delete(urls.PESSOA_JURIDICA_SERVICE_API + id.id + "/" +id.registration)
+                $http.delete(urls.PESSOA_JURIDICA_SERVICE_API + "/" +id)
                     .then(
                         function (response) {
                             loadAllPessoaJuridica();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao remover a Pessoa Jur&#x00ED;dica com o id :'+id);
+                            console.error('Erro ao remover a Pessoa Jurídica com o id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

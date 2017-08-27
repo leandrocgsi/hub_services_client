@@ -29,7 +29,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return deferred.promise;
                     },
                     pessoaFisica: function ($q, PessoaFisicaService) {
-                        console.log('Listando as Pessoas F&#x00ED;sicas');
+                        console.log('Listando as Pessoas Físicas');
                         var deferred = $q.defer();
                         PessoaFisicaService.loadAllPessoaFisica().then(deferred.resolve, deferred.resolve);
                         return deferred.promise;
