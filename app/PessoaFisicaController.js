@@ -24,29 +24,29 @@ angular.module('crudApp').controller('PessoaFisicaController',
         function submit() {
             console.log('Submetendo');
             if (self.pessoaFisica.id === undefined || self.pessoaFisica.id === null) {
-                console.log('Salvando Um Nova Pessoa Física', self.pessoaFisica);
+                console.log('Salvando Um Nova Pessoa F&#x00ED;sica', self.pessoaFisica);
                 createPessoaFisica(self.pessoaFisica);
             } else {
                 updatePessoaFisica(self.pessoaFisica, self.pessoaFisica.id);
-                console.log('Atualizando a Pessoa Física com o id ', self.pessoaFisica.id);
+                console.log('Atualizando a Pessoa F&#x00ED;sica com o id ', self.pessoaFisica.id);
             }
         }
 
         function createPessoaFisica(pessoaFisica) {
-            console.log('Criação de Pessoas Físicas');
+            console.log('Criação de Pessoas F&#x00ED;sicas');
             PessoaFisicaService.createPessoaFisica(pessoaFisica)
                 .then(
                     function (response) {
-                        console.log('Pessoa Física criada com sucesso');
-                        self.successMessage = 'Pessoa Física criada com sucesso';
+                        console.log('Pessoa F&#x00ED;sica criada com sucesso');
+                        self.successMessage = 'Pessoa F&#x00ED;sica criada com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         self.pessoaFisica={};
                         $scope.myForm.$setPristine();
                     },
                     function (errResponse) {
-                        console.error('Erro ao criar a Pessoa Física');
-                        self.errorMessage = 'Erro ao criar a Pessoa Física: ' + errResponse.data.errorMessage;
+                        console.error('Erro ao criar a Pessoa F&#x00ED;sica');
+                        self.errorMessage = 'Erro ao criar a Pessoa F&#x00ED;sica: ' + errResponse.data.errorMessage;
                         self.successMessage='';
                     }
                 );
@@ -54,19 +54,19 @@ angular.module('crudApp').controller('PessoaFisicaController',
 
 
         function updatePessoaFisica(pessoaFisica, id){
-            console.log('Atualização de Pessoas Físicas');
+            console.log('Atualização de Pessoas F&#x00ED;sicas');
             PessoaFisicaService.updatePessoaFisica(pessoaFisica, id)
                 .then(
                     function (response){
-                        console.log('Pessoa Física atualizada com sucesso');
-                        self.successMessage='Pessoa Física atualizada com sucesso';
+                        console.log('Pessoa F&#x00ED;sica atualizada com sucesso');
+                        self.successMessage='Pessoa F&#x00ED;sica atualizada com sucesso';
                         self.errorMessage='';
                         self.done = true;
                         $scope.myForm.$setPristine();
                     },
                     function(errResponse){
-                        console.error('Erro ao atualizar a Pessoa Física');
-                        self.errorMessage='Erro ao atualizar a Pessoa Física '+errResponse.data;
+                        console.error('Erro ao atualizar a Pessoa F&#x00ED;sica');
+                        self.errorMessage='Erro ao atualizar a Pessoa F&#x00ED;sica '+errResponse.data;
                         self.successMessage='';
                     }
                 );
@@ -74,14 +74,14 @@ angular.module('crudApp').controller('PessoaFisicaController',
 
 
         function removePessoaFisica(id){
-            console.log('Remoção de Pessoa Física com o id '+id);
+            console.log('Remoção de Pessoa F&#x00ED;sica com o id '+id);
             PessoaFisicaService.removePessoaFisica(id)
                 .then(
                     function(){
-                        console.log('Pessoa Física de id '+id + ' removida com sucesso');
+                        console.log('Pessoa F&#x00ED;sica de id '+id + ' removida com sucesso');
                     },
                     function(errResponse){
-                        console.error('Erro ao remover a Pessoa Física '+id +', Erro :'+errResponse.data);
+                        console.error('Erro ao remover a Pessoa F&#x00ED;sica '+id +', Erro :'+errResponse.data);
                     }
                 );
         }
@@ -99,7 +99,7 @@ angular.module('crudApp').controller('PessoaFisicaController',
                     self.pessoaFisica = pessoaFisica;
                 },
                 function (errResponse) {
-                    console.error('Erro ao remover a Pessoa Física ' + id + ', Error :' + errResponse.data);
+                    console.error('Erro ao remover a Pessoa F&#x00ED;sica ' + id + ', Error :' + errResponse.data);
                 }
             );
         }

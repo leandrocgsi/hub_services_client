@@ -1,6 +1,6 @@
 <div class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading"><span class="lead">Pessoa Jurídica</span></div>
+<!-- Default panel contents -->
+<div class="panel-heading"><span class="lead">Pessoa Jur&#x00ED;dica</span></div>
     <div class="panel-body">
         <div class="formcontainer">
           <div class="alert alert-success" role="alert" ng-if="pessoaJuridicaCtrl.successMessage">{{pessoaJuridicaCtrl.successMessage}}</div>
@@ -12,7 +12,7 @@
                   <div class="form-group col-md-12">
                       <label class="col-md-2 control-lable" for="age">CNPJ</label>
                       <div class="col-md-7">
-                          <input type="text" ng-model="pessoaJuridicaCtrl.pessoaJuridica.cpfcnpj" id="cnpj" class="form-control input-sm" placeholder="Digite o CNPJ da Pessoa Jurídica" required/>
+                          <input type="text" ng-model="pessoaJuridicaCtrl.pessoaJuridica.cpfcnpj" id="cnpj" class="form-control input-sm" placeholder="Digite o CNPJ da Pessoa Jur&#x00ED;dica" required/>
                       </div>
                   </div>
               </div>
@@ -37,7 +37,7 @@
 
               <div class="row">
                   <div class="form-actions floatRight">
-                      <input type="submit"  value="{{!pessoaJuridicaCtrl.pessoaJuridica ? 'Salvar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
+                      <input type="submit"  value="{{!pessoaJuridicaCtrl.pessoaJuridica.id ? 'Salvar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
 
                       <button type="button" ng-click="pessoaJuridicaCtrl.reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Limpar</button>
                   </div>
@@ -45,15 +45,16 @@
             </form>
         </div>
     </div>
-  </div>
-  <div class="panel panel-default">
+</div>
+<div class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading"><span class="lead">Lista de Pessoas Jurídicas</span></div>
+    <div class="panel-heading"><span class="lead">Lista de Pessoas Jur&#x00ED;dicas</span></div>
   	<div class="panel-body">
   		<div class="table-responsive">
   	        <table class="table table-hover">
   	            <thead>
   	            <tr>
+  	                <th>ID</th>
   	                <th>CNPJ</th>
   	                <th>Nome Fantasia</th>
   	                <th>Razão Social</th>
@@ -64,6 +65,7 @@
   	            <tbody>
   	            <tr ng-repeat="u in pessoaJuridicaCtrl.getAllPessoaJuridica()">
   	                <td>{{u.id}}</td>
+  	                <td>{{u.cpfcnpj}}</td>
   	                <td>{{u.nomeNomeFantasia}}</td>
   	                <td>{{u.nomeRazaoSocial}}</td>
   	                <td><button type="button" ng-click="pessoaJuridicaCtrl.editPessoaJuridica(u.id)" class="btn btn-success custom-width">Editar</button></td>

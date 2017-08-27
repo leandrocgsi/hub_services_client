@@ -16,17 +16,17 @@ angular.module('crudApp').factory('PessoaFisicaService',
             return factory;
 
             function loadAllPessoaFisica() {
-                console.log('Buscando todas as Pessoas Físicas');
+                console.log('Buscando todas as Pessoas F&#x00ED;sicas');
                 var deferred = $q.defer();
                 $http.get(urls.PESSOA_FISICA_SERVICE_API)
                     .then(
                         function (response) {
-                            console.log('Todas as Pessoas Físicas recuperadas com sucesso');
+                            console.log('Todas as Pessoas F&#x00ED;sicas recuperadas com sucesso');
                             $localStorage.pessoaFisica = response.data;
                             deferred.resolve(response);
                         },
                         function (errResponse) {
-                            console.error('Erro ao recuperar as Pessoas Físicas');
+                            console.error('Erro ao recuperar as Pessoas F&#x00ED;sicas');
                             deferred.reject(errResponse);
                         }
                     );
@@ -38,16 +38,16 @@ angular.module('crudApp').factory('PessoaFisicaService',
             }
 
             function getPessoaFisica(id) {
-                console.log('Recuperando as informações da Pessoa Física de id :'+id);
+                console.log('Recuperando as informações da Pessoa F&#x00ED;sica de id :'+id);
                 var deferred = $q.defer();
                 $http.get(urls.PESSOA_FISICA_SERVICE_API + id)
                     .then(
                         function (response) {
-                            console.log('Informações da Pessoa Física de id :'+id+ ' recuperadas com sucesso');
+                            console.log('Informações da Pessoa F&#x00ED;sica de id :'+id+ ' recuperadas com sucesso');
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao recuperar as informações da Pessoa Física de id :'+id);
+                            console.error('Erro ao recuperar as informações da Pessoa F&#x00ED;sica de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -55,7 +55,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
             }
 
             function createPessoaFisica(pessoaFisica) {
-                console.log('Criando uma nova Pessoa Física');
+                console.log('Criando uma nova Pessoa F&#x00ED;sica');
                 var deferred = $q.defer();
                 $http.post(urls.PESSOA_FISICA_SERVICE_API, pessoaFisica)
                     .then(
@@ -64,7 +64,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                           console.error('Erro ao criar uma nova Pessoa Física : '+errResponse.data.errorMessage);
+                           console.error('Erro ao criar uma nova Pessoa F&#x00ED;sica : '+errResponse.data.errorMessage);
                            deferred.reject(errResponse);
                         }
                     );
@@ -72,7 +72,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
             }
 
             function updatePessoaFisica(pessoaFisica, id) {
-                console.log('Atualizando a Pessoa Física de id '+id);
+                console.log('Atualizando a Pessoa F&#x00ED;sica de id '+id);
                 var deferred = $q.defer();
                 $http.put(urls.PESSOA_FISICA_SERVICE_API + id, pessoaFisica)
                     .then(
@@ -81,7 +81,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao atualizar a Pessoa Física de id :'+id);
+                            console.error('Erro ao atualizar a Pessoa F&#x00ED;sica de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
@@ -89,7 +89,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
             }
 
             function removePessoaFisica(id) {
-                console.log('Removendo a Pessoa Física de id '+id);
+                console.log('Removendo a Pessoa F&#x00ED;sica de id '+id);
                 var deferred = $q.defer();
                 $http.delete(urls.PESSOA_FISICA_SERVICE_API + id)
                     .then(
@@ -98,7 +98,7 @@ angular.module('crudApp').factory('PessoaFisicaService',
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao remover a Pessoa Física de id :'+id);
+                            console.error('Erro ao remover a Pessoa F&#x00ED;sica de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );
