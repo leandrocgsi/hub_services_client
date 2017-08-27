@@ -9,27 +9,17 @@ app.constant('urls', {
 app.config(['$stateProvider', '$urlRouterProvider',
     function($stateProvider, $urlRouterProvider) {
 
-      //  $urlRouterProvider.otherwise('/home');
+        $urlRouterProvider.otherwise('/home');
 
         $stateProvider
-            .state('menu-left', {
-                url: '/menu-left',
-                views: {
-                    'menu-left': {
-                        templateUrl: 'templates/menu-left.html'
-                    }
-                }
-            })
-            .state('home', {
-                url: '/#/home',
-                templateUrl: 'pages/home',
-                controller:'HomeController',
-                controllerAs:'homeCtrl',
-            })
-            .state('pessoaJuridica', {
-                url: '/#/pessoaJuridica',
-                templateUrl: 'pages/pessoaJuridica',
-                controller:'PessoaJuridicaController',
+        .state('home', {
+            url: '/home',
+            templateUrl: 'pages/home.html'
+        })
+        .state('pessoaJuridica', {
+            url: '/pessoaJuridica',
+            templateUrl: 'pages/pessoaJuridica.html',
+            controller:'PessoaJuridicaController',
                 controllerAs:'pessoaJuridicaCtrl',
                 resolve: {
                     pessoaJuridica: function ($q, PessoaJuridicaService) {
@@ -45,20 +35,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
                         return deferred.promise;
                     }
                 }
-            })
-            .state('pessoaFisica', {
-                url: '/#/pessoaFisica',
-                templateUrl: 'pages/pessoaFisica',
-                controller:'PessoaFisicaController',
-                controllerAs:'pessoaFisicaCtrl',
-                resolve: {
-                    pessoaFisica: function ($q, PessoaFisicaService) {
-                        console.log('Listando todas as Pessoas Fisicas');
-                        var deferred = $q.defer();
-                        PessoaFisicaService.loadAllPessoaFisica().then(deferred.resolve, deferred.resolve);
-                        return deferred.promise;
-                    }
+        })
+        .state('pessoaFisica', {
+            url: '/pessoaFisica',
+            templateUrl: 'pages/pessoaFisica.html',
+            controller:'PessoaFisicaController',
+            controllerAs:'pessoaFisicaCtrl',
+            resolve: {
+                pessoaFisica: function ($q, PessoaFisicaService) {
+                    console.log('Listando todas as Pessoas Fisicas');
+                    var deferred = $q.defer();
+                    PessoaFisicaService.loadAllPessoaFisica().then(deferred.resolve, deferred.resolve);
+                    return deferred.promise;
                 }
-            });
-            ;
+            }
+        });
+        ;
     }]);
