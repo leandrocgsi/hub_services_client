@@ -2,6 +2,7 @@ var app = angular.module('crudApp',['ui.router','ngStorage']);
 
 app.constant('urls', {
     BASE: 'http://localhost:8080/',
+    CONTA_SERVICE_API : 'http://localhost:8080/api/conta/',
     PESSOA_FISICA_SERVICE_API : 'http://localhost:8080/api/pessoaFisica/',
     PESSOA_JURIDICA_SERVICE_API : 'http://localhost:8080/api/pessoaJuridica/'
 });
@@ -15,6 +16,20 @@ app.config(['$stateProvider', '$urlRouterProvider',
         .state('home', {
             url: '/home',
             templateUrl: 'pages/home.html'
+        })
+        .state('conta', {
+            url: '/conta',
+            templateUrl: 'pages/conta.html',
+            controller:'ContaController',
+            controllerAs:'contaCtrl',
+            resolve: {
+                conta: function ($q, ContaService) {
+                    console.log('Listando todas as Contas');
+                    var deferred = $q.defer();
+                    ContaService.loadAllConta().then(deferred.resolve, deferred.resolve);
+                    return deferred.promise;
+                }
+            }
         })
         .state('pessoaJuridica', {
             url: '/pessoaJuridica',

@@ -18,6 +18,8 @@
         <li><a href="#"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="#pessoaFisica"><i class="fa fa-user"></i> Pessoa F&#x00ED;sica</a></li>
         <li><a href="#pessoaJuridica"><i class="fa fa-industry"></i> Pessoa Jur&#x00ED;dica</a></li>
+        <li><a href="#conta"><i class="fa fa-money"></i> Contas</a></li>
+        <li><a href="#transacoes"><i class="fa fa-exchange"></i> Transa&#x00E7;&#x00F5;es</a></li>
       </ul>
     </div>
   </nav>
@@ -33,11 +35,16 @@
   <script src="lib/angular-ui-router.min.js" ></script>
   <script src="lib/localforage.min.js" ></script>
   <script src="lib/ngStorage.min.js"></script>
+
   <script src="app/app.js"></script>
-  <script src="app/PessoaJuridicaService.js"></script>
-  <script src="app/PessoaFisicaService.js"></script>
-  <script src="app/HomeController.js"></script>
-  <script src="app/PessoaJuridicaController.js"></script>
-  <script src="app/PessoaFisicaController.js"></script>
+
+  <script src="app/controllers/ContaController.js"></script>
+  <script src="app/controllers/PessoaFisicaController.js"></script>
+  <script src="app/controllers/PessoaJuridicaController.js"></script>
+
+  <script src="app/services/ContaService.js"></script>
+  <script src="app/services/PessoaFisicaService.js"></script>
+  <script src="app/services/PessoaJuridicaService.js"></script>
+
 </body>
 </html>
