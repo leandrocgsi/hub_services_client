@@ -97,6 +97,7 @@ angular.module('crudApp').controller('PessoaFisicaController',
             PessoaFisicaService.getPessoaFisica(id).then(
                 function (pessoaFisica) {
                     self.pessoaFisica = pessoaFisica;
+                    self.pessoaFisica.dataDeNascimento = new Date(self.pessoaFisica.dataDeNascimento);
                 },
                 function (errResponse) {
                     console.error('Erro ao remover a Pessoa Física ' + id + ', Error :' + errResponse.data);

@@ -9,25 +9,41 @@
                 <input type="hidden" ng-model="contaCtrl.conta.id" />
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="unomeNomeFantasia">Nome</label>
+                        <label class="col-md-2 control-lable" for="unome">Nome</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="contaCtrl.conta.nomeNomeFantasia" id="unomeNomeFantasia" class="contaname form-control input-sm" placeholder="Digite um nome" required ng-minlength="3"/>
+                            <input type="text" ng-model="contaCtrl.conta.nome" id="unome" class="contaname form-control input-sm" placeholder="Digite um nome" required ng-minlength="3"/>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="age">CPF</label>
+                        <label class="col-md-2 control-lable" for="unome">Pessoa</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="contaCtrl.conta.cpfcnpj" id="cpfcnpj" class="form-control input-sm" placeholder="Digite o CPF da Conta" required/>
+                          <select name="singleSelect" ng-model="contaCtrl.pessoa" ng-selected="contaCtrl.selectedItem" class="form-control input-sm">
+                            <option ng-repeat="item in contaCtrl.pessoas" value="{{item.id}}">{{item.nome}}</option>
+                          </select>
                         </div>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="age">Data de Nascimento</label>
+                        <label class="col-md-2 control-lable" for="age">Data de Criação</label>
                         <div class="col-md-7">
-                            <input type="date" ng-model="contaCtrl.conta.dataDeNascimento" id="dataDeNascimento" class="form-control input-sm" placeholder="dd/MM/yyyy" required />
+                            <input type="date" ng-model="contaCtrl.conta.dataCriacao" id="dataCriacao"
+                            class="form-control input-sm" placeholder="dd/MM/yyyy" required
+                            value="{{date | date:yyyy-MM-dd}}"
+                            data-date-format="yyyy-MM-dd" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="age">Saldo</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="contaCtrl.conta.saldo" id="saldo" class="form-control input-sm" placeholder="Digite o saldo inicial da Conta" required  ng-pattern="contaCtrl.onlyNumbers"/>
                         </div>
                     </div>
                 </div>
@@ -52,8 +68,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
+                    <th>Tipo de Conta</th>
+                    <th>Data de Criação</th>
+                    <th>Saldo</th>
                     <th width="100"></th>
                     <th width="100"></th>
                 </tr>
@@ -61,9 +78,10 @@
                 <tbody>
                 <tr ng-repeat="u in contaCtrl.getAllConta()">
                     <td>{{u.id}}</td>
-                    <td>{{u.nomeNomeFantasia}}</td>
-                    <td>{{u.cpfcnpj}}</td>
-                    <td>{{u.dataDeNascimento}}</td>
+                    <td>{{u.nome}}</td>
+                    <td>{{u.tipoConta.descricao}}</td>
+                    <td>{{u.dataCriacao}}</td>
+                    <td>{{u.saldo}}</td>
                     <td><button type="button" ng-click="contaCtrl.editConta(u.id)" class="btn btn-success custom-width">Editar</button></td>
                     <td><button type="button" ng-click="contaCtrl.removeConta(u.id)" class="btn btn-danger custom-width">Remover</button></td>
                 </tr>

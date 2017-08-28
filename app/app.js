@@ -44,6 +44,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     var deferred = $q.defer();
                     TransacaoService.loadAllTransacao().then(deferred.resolve, deferred.resolve);
                     return deferred.promise;
+                },
+                pessoas: function ($q, HelperService) {
+                    console.log('Listando as Pessoas');
+                    var deferred = $q.defer();
+                    HelperService.loadAllPessoa().then(deferred.resolve, deferred.resolve);
+                    return deferred.promise;
                 }
             }
         })

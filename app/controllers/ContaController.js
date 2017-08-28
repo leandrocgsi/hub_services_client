@@ -1,17 +1,22 @@
 'use strict';
 
 angular.module('crudApp').controller('ContaController',
-    ['ContaService', '$scope',  function( ContaService, $scope) {
+    ['ContaService', 'HelperService', '$scope',  function( ContaService, HelperService, $scope) {
         var self = this;
         self.conta = {};
         self.contas=[];
         self.submit = submit;
 
         self.getAllConta = getAllConta;
+
+        self.getAllPessoa = getAllPessoa;
+
         self.createConta = createConta;
         self.updateConta = updateConta;
         self.removeConta = removeConta;
-        
+
+        self.pessoas= HelperService.loadAllPessoa();
+
         self.editConta = editConta;
         self.reset = reset;
 
@@ -87,9 +92,12 @@ angular.module('crudApp').controller('ContaController',
                 );
         }
 
-
         function getAllConta(){
             return ContaService.getAllConta();
+        }
+
+        function getAllPessoa(){
+            return HelperService.loadAllPessoa();
         }
 
         function editConta(id) {
@@ -98,6 +106,7 @@ angular.module('crudApp').controller('ContaController',
             ContaService.getConta(id).then(
                 function (conta) {
                     self.conta = conta;
+                    self.conta.dataCriacao = new Date(self.conta.dataCriacao);
                 },
                 function (errResponse) {
                     console.error('Erro ao remover a Conta ' + id + ', Error :' + errResponse.data);

@@ -6,7 +6,9 @@ angular.module('crudApp').factory('HelperService',
 
             var factory = {
                 loadAllTipoConta: loadAllTipoConta,
-                loadAllStatusConta: loadAllStatusConta
+                loadAllStatusConta: loadAllStatusConta,
+                loadAllPessoa: loadAllPessoa,
+                getAllPessoa: getAllPessoa
             };
 
             return factory;
@@ -47,7 +49,27 @@ angular.module('crudApp').factory('HelperService',
                 return deferred.promise;
             }
 
+            function loadAllPessoa() {
+                console.log('Buscando todas as Pessoas');
+                var deferred = $q.defer();
+                $http.get(urls.HELPER_SERVICE_API + "/pessoas")
+                    .then(
+                        function (response) {
+                            console.log('Todas as Pessoas recuperadas com sucesso');
+                            $localStorage.pessoa = response.data;
+                            deferred.resolve(response);
+                        },
+                        function (errResponse) {
+                            console.error('Erro ao recuperar as Pessoas');
+                            deferred.reject(errResponse);
+                        }
+                    );
+                return deferred.promise;
+            }
 
+            function getAllPessoa(){
+                return $localStorage.pessoa;
+            }
 
         }
     ]);
