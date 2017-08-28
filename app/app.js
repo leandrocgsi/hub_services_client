@@ -30,6 +30,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     var deferred = $q.defer();
                     ContaService.loadAllConta().then(deferred.resolve, deferred.resolve);
                     return deferred.promise;
+                },
+                pessoa: function ($q, HelperService) {
+                	console.log('Listando as Pessoas');
+                	var deferred = $q.defer();
+                	HelperService.loadAllPessoa().then(deferred.resolve, deferred.resolve);
+                	return deferred.promise;
                 }
             }
         })
@@ -44,12 +50,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     var deferred = $q.defer();
                     TransacaoService.loadAllTransacao().then(deferred.resolve, deferred.resolve);
                     return deferred.promise;
-                },
-                pessoas: function ($q, HelperService) {
-                    console.log('Listando as Pessoas');
-                    var deferred = $q.defer();
-                    HelperService.loadAllPessoa().then(deferred.resolve, deferred.resolve);
-                    return deferred.promise;
                 }
             }
         })
@@ -57,21 +57,15 @@ app.config(['$stateProvider', '$urlRouterProvider',
             url: '/pessoaJuridica',
             templateUrl: 'pages/pessoaJuridica.html',
             controller:'PessoaJuridicaController',
-                controllerAs:'pessoaJuridicaCtrl',
-                resolve: {
-                    pessoaJuridica: function ($q, PessoaJuridicaService) {
-                        console.log('Listando as Pessoas Juridicas');
-                        var deferred = $q.defer();
-                        PessoaJuridicaService.loadAllPessoaJuridica().then(deferred.resolve, deferred.resolve);
-                        return deferred.promise;
-                    },
-                    pessoaFisica: function ($q, PessoaFisicaService) {
-                        console.log('Listando as Pessoas Físicas');
-                        var deferred = $q.defer();
-                        PessoaFisicaService.loadAllPessoaFisica().then(deferred.resolve, deferred.resolve);
-                        return deferred.promise;
-                    }
+            controllerAs:'pessoaJuridicaCtrl',
+            resolve: {
+                pessoaJuridica: function ($q, PessoaJuridicaService) {
+                    console.log('Listando as Pessoas Juridicas');
+                    var deferred = $q.defer();
+                    PessoaJuridicaService.loadAllPessoaJuridica().then(deferred.resolve, deferred.resolve);
+                    return deferred.promise;
                 }
+            }
         })
         .state('pessoaFisica', {
             url: '/pessoaFisica',

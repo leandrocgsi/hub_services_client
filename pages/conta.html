@@ -21,7 +21,7 @@
                         <label class="col-md-2 control-lable" for="unome">Pessoa</label>
                         <div class="col-md-7">
                           <select name="singleSelect" ng-model="contaCtrl.pessoa" ng-selected="contaCtrl.selectedItem" class="form-control input-sm">
-                            <option ng-repeat="item in contaCtrl.pessoas" value="{{item.id}}">{{item.nome}}</option>
+                            <option ng-repeat="item in contaCtrl.getAllPessoa()" value="{{item.id}}">{{item.nomeNomeFantasia}}</option>
                           </select>
                         </div>
                     </div>
