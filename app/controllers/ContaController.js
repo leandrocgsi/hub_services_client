@@ -6,12 +6,15 @@ angular.module('crudApp').controller('ContaController',
         self.conta = {};
         self.contas=[];
 
-        //self.pessoas = findAllPessoa();
-        //self.pessoas = angular.fromJson("[{\"id\":1,\"cpfcnpj\":\"98.408.715\/0001-82\",\"nomeNomeFantasia\":\"ERUDIO\",\"nomeRazaoSocial\":\"ERUDIO Corporation LTDA\"},{\"id\":2,\"cpfcnpj\":\"175.149.416-06\",\"nomeNomeFantasia\":\"Leandro da Costa Gon\u00E7alves\",\"dataDeNascimento\":\"1984-12-02\"},{\"id\":3,\"cpfcnpj\":\"702.623.662-82\",\"nomeNomeFantasia\":\"Fl\u00E1vio da Costa Gon\u00E7alves\",\"dataDeNascimento\":\"1988-12-05\"},{\"id\":6,\"cpfcnpj\":\"61.872.686\/0001-03\",\"nomeNomeFantasia\":\"ACME\",\"nomeRazaoSocial\":\"ACME Company\"}]");
         self.submit = submit;
 
+        //Table
         self.getAllConta = getAllConta;
+
+        //Selects
         self.getAllPessoa = getAllPessoa;
+        self.getAllStatusConta = getAllStatusConta;
+        self.getAllTipoConta = getAllTipoConta;
 
         self.createConta = createConta;
         self.updateConta = updateConta;
@@ -100,6 +103,14 @@ angular.module('crudApp').controller('ContaController',
             return HelperService.getAllPessoa();
         }
 
+        function getAllStatusConta(){
+        	return HelperService.getAllStatusConta();
+        }
+
+        function getAllTipoConta(){
+        	return HelperService.getAllTipoConta();
+        }
+        
         function editConta(id) {
             self.successMessage='';
             self.errorMessage='';

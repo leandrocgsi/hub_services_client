@@ -6,7 +6,11 @@ angular.module('crudApp').factory('HelperService',
 
             var factory = {
                 loadAllTipoConta: loadAllTipoConta,
+                getAllTipoConta: getAllTipoConta,
+
                 loadAllStatusConta: loadAllStatusConta,
+              	getAllStatusConta: getAllStatusConta,
+
                 loadAllPessoa: loadAllPessoa,
                 getAllPessoa: getAllPessoa
             };
@@ -14,46 +18,53 @@ angular.module('crudApp').factory('HelperService',
             return factory;
 
             function loadAllTipoConta() {
-                console.log('Buscando todos os Tipos de Conta');
-                var deferred = $q.defer();
-                $http.get(urls.HELPER_SERVICE_API + "/tiposConta")
-                    .then(
-                        function (response) {
-                            console.log('Todas os Tipos de Conta recuperados com sucesso');
-                            $localStorage.helper = response.data;
-                            deferred.resolve(response);
-                        },
-                        function (errResponse) {
-                            console.error('Erro ao recuperar os Tipos de Conta');
-                            deferred.reject(errResponse);
-                        }
-                    );
-                return deferred.promise;
+            	console.log('Buscando todas os Tipo Contas');
+            	var deferred = $q.defer();
+            	$http.get(urls.HELPER_SERVICE_API + "tiposConta")
+            		.then(
+            			function (response) {
+            				console.log('Todas os Tipo Contas recuperados com sucesso');
+            				$localStorage.tipoConta = response.data;
+            				deferred.resolve(response);
+            			},
+            			function (errResponse) {
+            				console.error('Erro ao recuperar as Tipo Contas');
+            				deferred.reject(errResponse);
+            			}
+            		);
+            	return deferred.promise;
+            }
+
+            function getAllTipoConta(){
+            	 return $localStorage.tipoConta;
             }
 
             function loadAllStatusConta() {
-                console.log('Buscando todos os Status de Conta');
-                var deferred = $q.defer();
-                $http.get(urls.HELPER_SERVICE_API + "/statusConta")
-                    .then(
-                        function (response) {
-                            console.log('Todas os Status de Conta recuperados com sucesso');
-                            $localStorage.helper = response.data;
-                            deferred.resolve(response);
-                        },
-                        function (errResponse) {
-                            console.error('Erro ao recuperar os Status de Conta');
-                            deferred.reject(errResponse);
-                        }
-                    );
-                return deferred.promise;
+            	console.log('Buscando todas os Status Contas');
+            	var deferred = $q.defer();
+            	$http.get(urls.HELPER_SERVICE_API + "statusConta")
+            		.then(
+            			function (response) {
+            				console.log('Todas os Status Contas recuperados com sucesso');
+            				$localStorage.statusConta = response.data;
+            				deferred.resolve(response);
+            			},
+            			function (errResponse) {
+            				console.error('Erro ao recuperar as StatusContas');
+            				deferred.reject(errResponse);
+            			}
+            		);
+            	return deferred.promise;
             }
 
-            //return angular.fromJson("[{\"id\":1,\"cpfcnpj\":\"98.408.715\/0001-82\",\"nomeNomeFantasia\":\"ERUDIO\",\"nomeRazaoSocial\":\"ERUDIO Corporation LTDA\"},{\"id\":2,\"cpfcnpj\":\"175.149.416-06\",\"nomeNomeFantasia\":\"Leandro da Costa Gon\u00E7alves\",\"dataDeNascimento\":\"1984-12-02\"},{\"id\":3,\"cpfcnpj\":\"702.623.662-82\",\"nomeNomeFantasia\":\"Fl\u00E1vio da Costa Gon\u00E7alves\",\"dataDeNascimento\":\"1988-12-05\"},{\"id\":6,\"cpfcnpj\":\"61.872.686\/0001-03\",\"nomeNomeFantasia\":\"ACME\",\"nomeRazaoSocial\":\"ACME Company\"}]");;
+            function getAllStatusConta(){
+            	return $localStorage.statusConta;
+            }
+
             function loadAllPessoa() {
             	console.log('Buscando todas as Pessoas');
             	var deferred = $q.defer();
-            	$http.get(urls.HELPER_SERVICE_API + "/pessoas")
+            	$http.get(urls.HELPER_SERVICE_API + "pessoas")
             		.then(
             			function (response) {
             				console.log('Todas as Pessoas recuperadas com sucesso');
@@ -71,6 +82,6 @@ angular.module('crudApp').factory('HelperService',
             function getAllPessoa(){
             	return $localStorage.pessoa;
             }
-            
+
         }
     ]);
