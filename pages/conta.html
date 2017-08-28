@@ -20,9 +20,11 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="unome">Pessoa</label>
                         <div class="col-md-7">
-                          <select name="singleSelect" ng-model="contaCtrl.pessoa" ng-selected="contaCtrl.selectedItem" class="form-control input-sm">
-                            <option ng-repeat="item in contaCtrl.getAllPessoa()" value="{{item.id}}">{{item.nomeNomeFantasia}}</option>
+                          <select name="singleSelect" ng-model="contaCtrl.selectedPessoa"
+                                  ng-options="item as item.nomeNomeFantasia for item in contaCtrl.getAllPessoa()"
+                                  class="form-control input-sm">
                           </select>
+                          {{contaCtrl.selectedPessoa | json}}
                         </div>
                     </div>
                 </div>
@@ -31,9 +33,11 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="unome">Status</label>
                         <div class="col-md-7">
-                          <select name="singleSelect" ng-model="contaCtrl.statusConta" ng-selected="contaCtrl.selectedItem" class="form-control input-sm">
-                          	<option ng-repeat="item in contaCtrl.getAllStatusConta()" value="{{item.id}}">{{item.descricao}}</option>
-                          </select>
+                          <select name="singleSelect" ng-model="contaCtrl.selectedStatusConta"
+                    				  ng-options="item as item.descricao for item in contaCtrl.getAllStatusConta()"
+                    				  class="form-control input-sm">
+                    		  </select>
+                    		  {{contaCtrl.selectedStatusConta | json}}
                         </div>
                     </div>
                 </div>
@@ -42,9 +46,24 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="unome">Tipo de Conta</label>
                         <div class="col-md-7">
-                          <select name="singleSelect" ng-model="contaCtrl.tipoConta" ng-selected="contaCtrl.selectedItem" class="form-control input-sm">
-                          	<option ng-repeat="item in contaCtrl.getAllTipoConta()" value="{{item.id}}">{{item.descricao}}</option>
-                          </select>
+                          <select name="singleSelect" ng-model="contaCtrl.selectedTipoConta"
+                    				  ng-options="item as item.descricao for item in contaCtrl.getAllTipoConta()"
+                    				  class="form-control input-sm">
+                    		  </select>
+                    		  {{contaCtrl.selectedTipoConta | json}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" ng-show="contaCtrl.selectedTipoConta.descricao == 'CONTA FILIAL'">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="unome">Conta Matriz</label>
+                        <div class="col-md-7">
+                          <select name="singleSelectTipoConta" ng-model="contaCtrl.selectedMatriz"
+                    				  ng-options="item as item.nome for item in contaCtrl.getAllConta()"
+                    				  class="form-control input-sm">
+                    		  </select>
+                    		  {{contaCtrl.selectedMatriz | json}}
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,12 @@ angular.module('crudApp').controller('ContaController',
         self.getAllStatusConta = getAllStatusConta;
         self.getAllTipoConta = getAllTipoConta;
 
+        //SelectItems
+        self.selectedPessoa= null;
+        self.selectedStatusConta= null;
+        self.selectedTipoConta= null;
+        self.selectedMatriz= null;
+
         self.createConta = createConta;
         self.updateConta = updateConta;
         self.removeConta = removeConta;
@@ -43,6 +49,12 @@ angular.module('crudApp').controller('ContaController',
 
         function createConta(conta) {
             console.log('Criação de Contas');
+
+            conta.pessoa = self.selectedPessoa;
+            conta.statusConta = self.selectedStatusConta;
+            conta.tipoConta = self.selectedTipoConta;
+            conta.contaMatriz = self.selectedMatriz;
+
             ContaService.createConta(conta)
                 .then(
                     function (response) {
@@ -110,13 +122,18 @@ angular.module('crudApp').controller('ContaController',
         function getAllTipoConta(){
         	return HelperService.getAllTipoConta();
         }
-        
+
         function editConta(id) {
             self.successMessage='';
             self.errorMessage='';
             ContaService.getConta(id).then(
                 function (conta) {
                     self.conta = conta;
+                    self.selectedPessoa= self.conta.pessoa;
+                    self.selectedStatusConta= self.conta.statusConta;
+                    self.selectedTipoConta= self.conta.tipoConta;
+                    self.selectedMatriz= self.conta.contaMatriz;
+
                     self.conta.dataCriacao = new Date(self.conta.dataCriacao);
                 },
                 function (errResponse) {
