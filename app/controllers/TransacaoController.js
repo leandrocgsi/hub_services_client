@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('crudApp').controller('TransacaoController',
-    ['TransacaoService', 'ContaService', '$scope',  function( TransacaoService, ContaService, $scope) {
+    ['TransacaoService', 'ContaService', 'HelperService', '$scope',  function( TransacaoService, ContaService, HelperService, $scope) {
         var self = this;
         self.transacao = {};
         self.transacaos=[];
@@ -9,12 +9,13 @@ angular.module('crudApp').controller('TransacaoController',
 
         //Selects
         self.getAllConta = getAllConta;
+        self.getAllTipoTransacao = getAllTipoTransacao;
 
         //Table
         self.getAllTransacao = getAllTransacao;
         self.createTransacao = createTransacao;
         self.updateTransacao = updateTransacao;
-        self.removeTransacao = removeTransacao;
+        self.estornaTransacao = estornaTransacao;
 
         self.editTransacao = editTransacao;
         self.reset = reset;
@@ -78,9 +79,9 @@ angular.module('crudApp').controller('TransacaoController',
         }
 
 
-        function removeTransacao(id){
+        function estornaTransacao(id){
             console.log('Remoção de Transação com o id '+id);
-            TransacaoService.removeTransacao(id)
+            TransacaoService.estornaTransacao(id)
                 .then(
                     function(){
                         console.log('Transação de id '+id + ' removida com sucesso');
@@ -98,6 +99,10 @@ angular.module('crudApp').controller('TransacaoController',
 
         function getAllConta(){
             return ContaService.getAllConta();
+        }
+
+        function getAllTipoTransacao(){
+        	return HelperService.getAllTipoTransacao();
         }
 
         function editTransacao(id) {

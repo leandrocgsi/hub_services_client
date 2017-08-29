@@ -10,7 +10,7 @@ angular.module('crudApp').factory('TransacaoService',
                 getTransacao: getTransacao,
                 createTransacao: createTransacao,
                 updateTransacao: updateTransacao,
-                removeTransacao: removeTransacao
+                estornaTransacao: estornaTransacao
             };
 
             return factory;
@@ -88,17 +88,17 @@ angular.module('crudApp').factory('TransacaoService',
                 return deferred.promise;
             }
 
-            function removeTransacao(id) {
-                console.log('Removendo a Transação de id '+id);
+            function estornaTransacao(id) {
+                console.log('Atualizando a Transação de id '+id);
                 var deferred = $q.defer();
-                $http.delete(urls.TRANSACAO_SERVICE_API + id)
+                $http.put(urls.TRANSACAO_SERVICE_API + "/estornoTransacao/"+ id)
                     .then(
                         function (response) {
                             loadAllTransacao();
                             deferred.resolve(response.data);
                         },
                         function (errResponse) {
-                            console.error('Erro ao remover a Transação de id :'+id);
+                            console.error('Erro ao atualizar a Transação de id :'+id);
                             deferred.reject(errResponse);
                         }
                     );

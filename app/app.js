@@ -1,12 +1,14 @@
 var app = angular.module('crudApp',['ui.router','ngStorage']);
 
+var BASE_URL = 'http://localhost:8080/api/';
+
 app.constant('urls', {
-    BASE: 'http://localhost:8080/',
-    CONTA_SERVICE_API : 'http://localhost:8080/api/conta/',
-    HELPER_SERVICE_API : 'http://localhost:8080/api/helper/',
-    PESSOA_FISICA_SERVICE_API : 'http://localhost:8080/api/pessoaFisica/',
-    PESSOA_JURIDICA_SERVICE_API : 'http://localhost:8080/api/pessoaJuridica/',
-    TRANSACAO_SERVICE_API : 'http://localhost:8080/api/transacao/'
+
+    CONTA_SERVICE_API : BASE_URL + 'conta/',
+    HELPER_SERVICE_API : BASE_URL + 'helper/',
+    PESSOA_FISICA_SERVICE_API : BASE_URL + 'pessoaFisica/',
+    PESSOA_JURIDICA_SERVICE_API : BASE_URL + 'pessoaJuridica/',
+    TRANSACAO_SERVICE_API : BASE_URL + 'transacao/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -62,6 +64,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     var deferred = $q.defer();
                     TransacaoService.loadAllTransacao().then(deferred.resolve, deferred.resolve);
                     return deferred.promise;
+                },
+                tipoTransacao: function ($q, HelperService) {
+                	console.log('Listando os Tipos de Transação');
+                	var deferred = $q.defer();
+                	HelperService.loadAllTipoTransacao().then(deferred.resolve, deferred.resolve);
+                	return deferred.promise;
                 }
             }
         })

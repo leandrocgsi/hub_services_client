@@ -11,7 +11,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="unome">Conta Origem</label>
                         <div class="col-md-7">
-                          <select ng-model="transacaoCtrl.conta.contaMatriz"
+                          <select ng-model="transacaoCtrl.transacao.origem"
                           	  ng-options="item.nome for item in transacaoCtrl.getAllConta() track by item.id"
                           	  class="form-control input-sm"></select>
                         </div>
@@ -21,7 +21,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="unome">Conta Destino</label>
                         <div class="col-md-7">
-                          <select ng-model="transacaoCtrl.conta.contaMatriz"
+                          <select ng-model="transacaoCtrl.transacao.destino"
                               ng-options="item.nome for item in transacaoCtrl.getAllConta() track by item.id"
                               class="form-control input-sm"></select>
                         </div>
@@ -31,7 +31,17 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="age">Valor</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="contaCtrl.conta.saldo" id="saldo" class="form-control input-sm" placeholder="Digite o saldo inicial da Conta" required  ng-pattern="contaCtrl.onlyNumbers"/>
+                            <input type="text" ng-model="transacaoCtrl.transacao.valor" id="valor" class="form-control input-sm" placeholder="Digite o valor a ser transferido" required  ng-pattern="contaCtrl.onlyNumbers"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="unome">Tipo de Transação</label>
+                        <div class="col-md-7">
+                          <select ng-model="transacaoCtrl.transacao.tipoTransacao"
+                          	  ng-options="item.descricao for item in transacaoCtrl.getAllTipoTransacao() track by item.id"
+                          	  class="form-control input-sm"></select>
                         </div>
                     </div>
                 </div>
@@ -54,21 +64,23 @@
                 <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nome</th>
-                    <th>CPF</th>
-                    <th>Data de Nascimento</th>
-                    <th width="100"></th>
-                    <th width="100"></th>
+                    <th>Código</th>
+                    <th>Valor</th>
+                    <th>Origem</th>
+                    <th>Destino</th>
+                    <th>Tipo de Transação</th>
+                    <th width="100">Situação</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr ng-repeat="u in transacaoCtrl.getAllTransacao()">
                     <td>{{u.id}}</td>
-                    <td>{{u.nomeNomeFantasia}}</td>
-                    <td>{{u.cpfcnpj}}</td>
-                    <td>{{u.dataDeNascimento}}</td>
-                    <td><button type="button" ng-click="transacaoCtrl.editTransacao(u.id)" class="btn btn-success custom-width">Editar</button></td>
-                    <td><button type="button" ng-click="transacaoCtrl.removeTransacao(u.id)" class="btn btn-danger custom-width">Remover</button></td>
+                    <td>{{u.codigo}}</td>
+                    <td>{{u.valor}}</td>
+                    <td>{{u.origem.nome}}</td>
+                    <td>{{u.destino.nome}}</td>
+                    <td>{{u.tipoTransacao.descricao}}</td>
+                    <td><span ng-show="u.estornada">ESTORNADA</span><button type="button" ng-click="transacaoCtrl.estornaTransacao(u.id)" class="btn btn-danger custom-width" ng-show="!u.estornada">Estornar</button></td>
                 </tr>
                 </tbody>
             </table>

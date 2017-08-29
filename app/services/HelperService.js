@@ -7,12 +7,12 @@ angular.module('crudApp').factory('HelperService',
             var factory = {
                 loadAllTipoConta: loadAllTipoConta,
                 getAllTipoConta: getAllTipoConta,
-
                 loadAllStatusConta: loadAllStatusConta,
               	getAllStatusConta: getAllStatusConta,
-
                 loadAllPessoa: loadAllPessoa,
-                getAllPessoa: getAllPessoa
+                getAllPessoa: getAllPessoa,
+                loadAllTipoTransacao: loadAllTipoTransacao,
+                getAllTipoTransacao: getAllTipoTransacao
             };
 
             return factory;
@@ -60,6 +60,28 @@ angular.module('crudApp').factory('HelperService',
             function getAllStatusConta(){
             	return $localStorage.statusConta;
             }
+
+            function loadAllTipoTransacao() {
+            	console.log('Buscando todas os Tipos de Transação');
+            	var deferred = $q.defer();
+            	$http.get(urls.HELPER_SERVICE_API + "tiposTransacao")
+            		.then(
+            			function (response) {
+            				console.log('Todas os Tipos de Transação recuperados com sucesso');
+            				$localStorage.tipoTransacao = response.data;
+            				deferred.resolve(response);
+            			},
+            			function (errResponse) {
+            				console.error('Erro ao recuperar as Tipos de Transação');
+            				deferred.reject(errResponse);
+            			}
+            		);
+            	return deferred.promise;
+            }
+
+            function getAllTipoTransacao(){
+            	return $localStorage.tipoTransacao;
+            }	
 
             function loadAllPessoa() {
             	console.log('Buscando todas as Pessoas');
