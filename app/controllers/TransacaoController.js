@@ -29,12 +29,17 @@ angular.module('crudApp').controller('TransacaoController',
 
         function submit() {
             console.log('Submetendo');
-            if (self.transacao.id === undefined || self.transacao.id === null) {
-                console.log('Salvando uma nova Transação', self.transacao);
-                createTransacao(self.transacao);
+            if (self.transacao.origem.id === self.transacao.destino.id) {
+                self.errorMessage = 'Erro ao criar a Transação. A conta de origem e de destino são iguais! ';
+                self.successMessage='';
             } else {
-                updateTransacao(self.transacao, self.transacao.id);
-                console.log('Atualizando a Transação com o id ', self.transacao.id);
+                if (self.transacao.id === undefined || self.transacao.id === null) {
+                  console.log('Salvando uma nova Transação', self.transacao);
+                  createTransacao(self.transacao);
+                } else {
+                  updateTransacao(self.transacao, self.transacao.id);
+                  console.log('Atualizando a Transação com o id ', self.transacao.id);
+                }
             }
         }
 
