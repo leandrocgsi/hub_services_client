@@ -9,29 +9,24 @@
                 <input type="hidden" ng-model="transacaoCtrl.transacao.id" />
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="unomeNomeFantasia">Nome</label>
+                        <label class="col-md-2 control-lable" for="unome">Conta Origem</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="transacaoCtrl.transacao.nomeNomeFantasia" id="unomeNomeFantasia" class="contaname form-control input-sm" placeholder="Digite um nome" required ng-minlength="3"/>
+                          <select ng-model="transacaoCtrl.conta.contaMatriz"
+                          	  ng-options="item.nome for item in transacaoCtrl.getAllConta() track by item.id"
+                          	  class="form-control input-sm"></select>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="age">CPF</label>
+                        <label class="col-md-2 control-lable" for="unome">Conta Destino</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="transacaoCtrl.transacao.cpfcnpj" id="cpfcnpj" class="form-control input-sm" placeholder="Digite o CPF da Conta" required/>
+                          <select ng-model="transacaoCtrl.conta.contaMatriz"
+                              ng-options="item.nome for item in transacaoCtrl.getAllConta() track by item.id"
+                              class="form-control input-sm"></select>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label class="col-md-2 control-lable" for="age">Data de Nascimento</label>
-                        <div class="col-md-7">
-                            <input type="date" ng-model="transacaoCtrl.transacao.dataDeNascimento" id="dataDeNascimento" class="form-control input-sm" placeholder="dd/MM/yyyy" required />
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row">
                     <div class="form-actions floatRight">
                         <input type="submit"  value="{{!transacaoCtrl.transacao.id ? 'Salvar' : 'Atualizar'}}" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">
@@ -59,13 +54,13 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="u in transacaoCtrl.getAllConta()">
+                <tr ng-repeat="u in transacaoCtrl.getAllTransacao()">
                     <td>{{u.id}}</td>
                     <td>{{u.nomeNomeFantasia}}</td>
                     <td>{{u.cpfcnpj}}</td>
                     <td>{{u.dataDeNascimento}}</td>
-                    <td><button type="button" ng-click="transacaoCtrl.editConta(u.id)" class="btn btn-success custom-width">Editar</button></td>
-                    <td><button type="button" ng-click="transacaoCtrl.removeConta(u.id)" class="btn btn-danger custom-width">Remover</button></td>
+                    <td><button type="button" ng-click="transacaoCtrl.editTransacao(u.id)" class="btn btn-success custom-width">Editar</button></td>
+                    <td><button type="button" ng-click="transacaoCtrl.removeTransacao(u.id)" class="btn btn-danger custom-width">Remover</button></td>
                 </tr>
                 </tbody>
             </table>

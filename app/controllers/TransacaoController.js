@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('crudApp').controller('TransacaoController',
-    ['TransacaoService', '$scope',  function( TransacaoService, $scope) {
+    ['TransacaoService', 'ContaService', '$scope',  function( TransacaoService, ContaService, $scope) {
         var self = this;
         self.transacao = {};
         self.transacaos=[];
         self.submit = submit;
 
+        //Selects
+        self.getAllConta = getAllConta;
+
+        //Table
         self.getAllTransacao = getAllTransacao;
         self.createTransacao = createTransacao;
         self.updateTransacao = updateTransacao;
@@ -90,6 +94,10 @@ angular.module('crudApp').controller('TransacaoController',
 
         function getAllTransacao(){
             return TransacaoService.getAllTransacao();
+        }
+
+        function getAllConta(){
+            return ContaService.getAllConta();
         }
 
         function editTransacao(id) {

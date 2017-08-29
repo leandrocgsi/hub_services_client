@@ -32,22 +32,22 @@ app.config(['$stateProvider', '$urlRouterProvider',
                     return deferred.promise;
                 },
                 pessoa: function ($q, HelperService) {
-                	console.log('Listando as Pessoas');
-                	var deferred = $q.defer();
-                	HelperService.loadAllPessoa().then(deferred.resolve, deferred.resolve);
-                	return deferred.promise;
+                  	console.log('Listando as Pessoas');
+                  	var deferred = $q.defer();
+                  	HelperService.loadAllPessoa().then(deferred.resolve, deferred.resolve);
+                  	return deferred.promise;
                 },
                 statusConta: function ($q, HelperService) {
-                	console.log('Listando os Status Contas');
-                	var deferred = $q.defer();
-                	HelperService.loadAllStatusConta().then(deferred.resolve, deferred.resolve);
-                	return deferred.promise;
+                  	console.log('Listando os Status Contas');
+                  	var deferred = $q.defer();
+                  	HelperService.loadAllStatusConta().then(deferred.resolve, deferred.resolve);
+                  	return deferred.promise;
                 },
                 tipoConta: function ($q, HelperService) {
-                	console.log('Listando os Tipo Contas');
-                	var deferred = $q.defer();
-                	HelperService.loadAllTipoConta().then(deferred.resolve, deferred.resolve);
-                	return deferred.promise;
+                  	console.log('Listando os Tipo Contas');
+                  	var deferred = $q.defer();
+                  	HelperService.loadAllTipoConta().then(deferred.resolve, deferred.resolve);
+                  	return deferred.promise;
                 }
             }
         })
