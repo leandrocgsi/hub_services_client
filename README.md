@@ -1,4 +1,4 @@
-# hub_services_client
+# Hub Services Client
 
 Basta copiar o conteúdo para qualquer servidor HTTP como o Apache e acessar pelo navegador http://localhost/hub_services_client/#/home.
 
