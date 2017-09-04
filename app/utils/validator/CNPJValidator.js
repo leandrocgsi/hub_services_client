@@ -11,41 +11,33 @@ angular.module('crudApp').factory('CNPJValidator',
 
             return factory;
 
-            function validateCNPJ() {
-              cnpj = cnpj.replace(/[^\d]+/g,'');
-              if(cnpj == '') return false;
-              // Elimina CNPJs invalidos conhecidos
-              if (cnpj.length != 11 ||
-                  cnpj == "00000000000" ||
-                  cnpj == "11111111111" ||
-                  cnpj == "22222222222" ||
-                  cnpj == "33333333333" ||
-                  cnpj == "44444444444" ||
-                  cnpj == "55555555555" ||
-                  cnpj == "66666666666" ||
-                  cnpj == "77777777777" ||
-                  cnpj == "88888888888" ||
-                  cnpj == "99999999999")
-                      return false;
-              // Valida 1o digito
-              add = 0;
-              for (i=0; i < 9; i ++)
-                  add += parseInt(cnpj.charAt(i)) * (10 - i);
-                  rev = 11 - (add % 11);
-                  if (rev == 10 || rev == 11)
-                      rev = 0;
-                  if (rev != parseInt(cnpj.charAt(9)))
-                      return false;
-              // Valida 2o digito
-              add = 0;
-              for (i = 0; i < 10; i ++)
-                  add += parseInt(cnpj.charAt(i)) * (11 - i);
-              rev = 11 - (add % 11);
-              if (rev == 10 || rev == 11)
-                  rev = 0;
-              if (rev != parseInt(cnpj.charAt(10)))
+            function validateCNPJ(input_cnpj){
+
+               if(input_cnpj){
+                   var input=input_cnpj.toString();
+                   var pesos_A=[5,4,3,2,9,8,7,6,5,4,3,2];
+                   var pesos_B=[6,5,4,3,2,9,8,7,6,5,4,3,2];
+                   var sum=0;
+                   var x1=0;
+                   var x2=0;
+                   for(var i=0;i=2){
+                     x1=11-mod;
+                   }
+                   //calcula digito 2
+                   sum=0;
+                   for(var i=0;i=2){
+                     x2=11-mod;
+                   }
+
+                   //test digitos
+                   if(x1==input[12] && x2==input[13]){
+                     return true;
+                   }else{
+                     return false;
+                   }
+               }else{
                   return false;
-              return true;
+               }
             }
 
             function getAllTipoConta(){
